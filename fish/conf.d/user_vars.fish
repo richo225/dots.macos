@@ -13,3 +13,6 @@ set -x SUDO_EDITOR $EDITOR
 set -x GOPATH (go env GOPATH)
 set -x GOBIN (go env GOPATH)/bin
 set -x PATH $PATH $GOBIN
+
+# starship
+set -x STARSHIP_CONFIG $HOME/.config/starship/starship.toml
