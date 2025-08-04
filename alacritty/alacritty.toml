@@ -13,7 +13,7 @@ dynamic_title = true
 padding.x = 14
 padding.y = 14
 decorations = "None"
-opacity = 0.96
+opacity = 0.92
 
 [keyboard]
 bindings = [
