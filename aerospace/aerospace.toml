@@ -52,12 +52,12 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-inner.horizontal = [{ monitor.main = 30 }, 15]
-inner.vertical =   [{ monitor.main = 30 }, 15]
-outer.left =       [{ monitor.main = 30 }, 15]
-outer.bottom =     [{ monitor.main = 30 }, 15]
-outer.top =        [{ monitor.main = 30 }, 15]
-outer.right =      [{ monitor.main = 30 }, 15]
+inner.horizontal = [{ monitor.main = 15 }, 10]
+inner.vertical =   [{ monitor.main = 15 }, 10]
+outer.left =       [{ monitor.main = 15 }, 10]
+outer.bottom =     [{ monitor.main = 15 }, 10]
+outer.top =        [{ monitor.main = 15 }, 10]
+outer.right =      [{ monitor.main = 15 }, 15]
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -82,6 +82,7 @@ outer.right =      [{ monitor.main = 30 }, 15]
 # You can uncomment this line to open up terminal with alt + enter shortcut
 # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
 # alt-enter = 'exec-and-forget open -n /System/Applications/Utilities/Terminal.app'
+cmd-enter = 'exec-and-forget open -n -a Alacritty'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
 cmd-shift-semicolon = 'layout tiles horizontal vertical'
@@ -99,8 +100,8 @@ cmd-shift-k = 'move up'
 cmd-shift-l = 'move right'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#resize
-cmd-shift-minus = 'resize smart -50'
-cmd-shift-equal = 'resize smart +50'
+cmd-shift-minus = 'resize smart -100'
+cmd-shift-equal = 'resize smart +100'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 cmd-1 = 'workspace 1'
