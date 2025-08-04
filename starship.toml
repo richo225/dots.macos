@@ -1,0 +1,102 @@
+# Get editor completions based on the config schema
+# "$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = true
+# right_format= """$time"""
+
+format = """
+$os\
+$directory\
+$git_branch\
+$git_status\
+$shell\
+$lua\
+$ruby\
+$rust\
+$golang\
+$nodejs\
+$package\
+$fill\
+$aws\
+$jobs\
+$cmd_duration\
+$line_break\
+$character"""
+
+[palettes.tokyo]
+black = '#32344a'
+red = '#f7768e'
+green = '#9ece6a'
+yellow = '#e0af68'
+blue = '#7aa2f7'
+magenta = '#ad8ee6'
+cyan = '#449dab'
+white = '#787c99'
+
+palette = 'tokyo'
+
+[os]
+style = "bold white"
+disabled = false
+
+[os.symbols]
+Arch = " "
+Linux = " "
+Macos = " "
+Windows = " "
+
+[fill]
+symbol = ' '
+
+[directory]
+style = "blue"
+format = '[$path ]($style)'
+truncation_length = 3
+truncation_symbol = '…/'
+truncate_to_repo = false
+
+[custom.directory1]
+format = "[directory1](bg:#33658A)[](fg:#33658A)"
+shell = 'fish'
+when = '[ "$PWD" == "~" ]'
+
+
+[custom.directory2]
+format = "[directory2](bg:#4c873f)[](fg:#4c873f)"
+shell = 'fish'
+when = '[ "$PWD" != "~" ]'
+
+
+[git_branch]
+style = 'fg:green'
+symbol = ' '
+format = '[on](white) [$symbol$branch ]($style)'
+
+[git_status]
+style = 'fg:green'
+
+[[battery.display]]
+threshold = 10
+style = 'bold red'
+
+#[[battery.display]]
+#threshold = 30
+#style = 'bold yellow'
+
+[time]
+disabled = true
+use_12hr = true
+style = "italic"
+format = "[$time]($style) "
+
+[aws]
+symbol = ' '
+style = 'yellow'
+format = '[$symbol($profile )(\[$duration\] )]($style)'
+
+[cmd_duration]
+min_time = 500
+style = 'italic'
+format = '[$duration]($style)'
+
+
