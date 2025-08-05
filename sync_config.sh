@@ -6,7 +6,7 @@ OMARCHY_TOKYO_NIGHT_DIR="$HOME/.local/share/omarchy/themes/tokyo-night"
 set -e
 
 echo "Copying config directories to repo..."
-cp -r ~/.config/{aerospace,alacritty,fastfetch,fish,nvim,starship} .
+cp -r ~/.config/{aerospace,alacritty,borders,fastfetch,fish,nvim,starship} .
 
 echo "Copying alacritty config..."
 cp -r ~/.config/alacritty .

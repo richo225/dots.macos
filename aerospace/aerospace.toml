@@ -12,7 +12,9 @@ after-login-command = []
 # You can use it to add commands that run after AeroSpace startup.
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
-after-startup-command = []
+after-startup-command = [
+  'exec-and-forget borders'
+]
 
 # Start AeroSpace at login
 start-at-login = true
@@ -52,12 +54,12 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-inner.horizontal = [{ monitor.main = 15 }, 10]
-inner.vertical =   [{ monitor.main = 15 }, 10]
-outer.left =       [{ monitor.main = 15 }, 10]
-outer.bottom =     [{ monitor.main = 15 }, 10]
-outer.top =        [{ monitor.main = 15 }, 10]
-outer.right =      [{ monitor.main = 15 }, 15]
+inner.horizontal = 10
+inner.vertical =   10
+outer.left =       10
+outer.bottom =     10
+outer.top =        10
+outer.right =      10
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -86,6 +88,8 @@ cmd-enter = 'exec-and-forget open -n -a Alacritty'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
 cmd-shift-semicolon = 'layout tiles horizontal vertical'
+
+cmd-shift-f = 'fullscreen'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
 cmd-h = 'focus left'
