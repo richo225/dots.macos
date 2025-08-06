@@ -24,6 +24,8 @@ alias v='n'
 
 # Git
 alias g='git'
+alias gd='git diff --name-only | fzf -m --ansi --preview="git diff --color=always -- {}"'
+alias gl='git log --oneline --color=always --no-decorate | fzf --ansi --no-sort --preview="git show --color=always {1}" --preview-window=up:60%'
 alias gcl='git clone'
 alias gs='git status'
 alias ga='git add .'
