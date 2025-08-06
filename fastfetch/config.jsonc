@@ -35,12 +35,6 @@
             "keyColor": "green"
         },
         {
-            "type": "battery",
-            "key": "└ └ Battery",
-            "format": "{capacity} ({time-hours}h {time-minutes}m)",
-            "keyColor": "green"
-          },
-        {
             "type": "custom",
             "format": "└──────────────────────────────────────────────────────┘",
             "outputColor": "green"
