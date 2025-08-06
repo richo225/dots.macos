@@ -13,21 +13,33 @@
         },
         {
             "type": "title",
-            "key": "  PC",
+            "key": " PC",
             "keyColor": "green"
         },
         {
             "type": "cpu",
-            "key": "│ ├󰍛 CPU",
+            "key": "│ ├󰢤 CPU",
             "showPeCoreCount": true,
             "format": "{1}",
             "keyColor": "green"
         },
         {
             "type": "memory",
-            "key": "└ └󰍛 Memory",
+            "key": "│ ├󰍛 Memory",
+            "format": "{1} / {2}",
             "keyColor": "green"
         },
+        {
+            "type": "monitor",
+            "key": "│ ├󰍹 Monitor",
+            "keyColor": "green"
+        },
+        {
+            "type": "battery",
+            "key": "└ └ Battery",
+            "format": "{capacity} ({time-hours}h {time-minutes}m)",
+            "keyColor": "green"
+          },
         {
             "type": "custom",
             "format": "└──────────────────────────────────────────────────────┘",
@@ -41,7 +53,7 @@
         },
         {
             "type": "os",
-            "key": " OS",
+            "key": "󰀵 OS",
             "keyColor": "yellow"
         },
         {
@@ -61,9 +73,8 @@
         },
         "break",
         {
-            "type": "de",
-            "key": " DE",
-            "keyColor": "blue"
+            "type": "custom",
+            "format": "\u001b[34m󰢹 WM:\u001b[0m \u001b[97mAerospace\u001b[0m"
         },
         {
             "type": "lm",
@@ -71,22 +82,16 @@
             "keyColor": "blue"
         },
         {
-            "type": "wm",
-            "key": "│ ├ WM",
+            "type": "terminal",
+            "key": "│ ├ Terminal",
             "keyColor": "blue"
         },
         {
-            "type": "gpu",
-            "key": "│ ├󰍛 GPU Driver",
-            "format": "{3}",
-            "keyColor": "blue"
-        },
-        {
-            "type": "wmtheme",
-            "key": "└ └󰉼 Theme",
-            "keyColor": "blue"
-        },
-
+            "type": "custom",
+            "format": "\u001b[34m└ └󰉼 Theme:\u001b[0m \u001b[97mTokyo Night\u001b[0m"
+          }
+          
+          ,
         {
             "type": "custom",
             "format": "└────────────────────────────────────────────────────┘",
