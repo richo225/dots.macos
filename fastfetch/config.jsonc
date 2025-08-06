@@ -30,8 +30,9 @@
             "keyColor": "green"
         },
         {
-            "type": "monitor",
-            "key": "│ ├󰍹 Monitor",
+            "type": "display",
+            "key": "│ ├󰍹 Display",
+            "format": "{width}x{height} @ {refresh-rate}Hz ({type})",
             "keyColor": "green"
         },
         {
