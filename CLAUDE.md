@@ -59,6 +59,13 @@ Fisher plugins are listed in `fish_plugins`. On a new machine, run `fisher updat
 
 Don't commit fisher plugin files or `fish_variables` to the repo.
 
+## Secrets
+
+Never commit secrets, API tokens, passwords, or credentials. This is a public repo.
+
+- Shell env vars go in `fish_variables` via `set -Ux` — gitignored, never stowed
+- If a secret is accidentally staged, remove it and rotate the credential immediately
+
 ## Conventions
 
 - **Theme**: Tokyo Night everywhere — alacritty, starship, btop all use the same palette.
