@@ -32,10 +32,6 @@ function theme-set --description "Switch dots.macos theme"
     set -l sed_script (mktemp)
     awk -F'=' '/^[[:space:]]*#/{next} /^[[:space:]]*$/{next} NF>=2{key=$1; gsub(/[[:space:]]/,"",key); value=$0; sub(/^[^=]+=/,"",value); gsub(/^[[:space:]]*/,"",value); gsub(/^"/,"",value); gsub(/"[[:space:]]*$/,"",value); stripped=value; sub(/^#/,"",stripped); printf "s|{{ %s }}|%s|g\n",key,value; printf "s|{{ %s_strip }}|%s|g\n",key,stripped}' $COLORS_FILE > $sed_script
 
-    # Generate ghostty colors
-    mkdir -p ~/.config/ghostty
-    sed -f $sed_script $TEMPLATES_DIR/ghostty.conf.tpl > ~/.config/ghostty/colors.conf
-
     # Generate alacritty colors
     mkdir -p ~/.config/alacritty
     sed -f $sed_script $TEMPLATES_DIR/alacritty.toml.tpl > ~/.config/alacritty/colors.toml
