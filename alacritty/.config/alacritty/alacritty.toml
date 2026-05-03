@@ -6,18 +6,19 @@ TERM = "xterm-256color"
 normal = { family = "CaskaydiaMono Nerd Font", style = "Regular" }
 bold = { family = "CaskaydiaMono Nerd Font", style = "Bold" }
 italic = { family = "CaskaydiaMono Nerd Font", style = "Italic" }
-size = 14
+size = 16
 
 [window]
 dynamic_title = true
-padding.x = 14
-padding.y = 14
+padding.x = 16
+padding.y = 16
 decorations = "Buttonless"
 opacity = 0.92
 
 [keyboard]
 bindings = [
-{ key = "F11", action = "ToggleFullscreen" }
+{ key = "F11", action = "ToggleFullscreen" },
+{ key = "Return", mods = "Shift", chars = "\u001B\r" }
 ]
 [colors]
 [colors.primary]

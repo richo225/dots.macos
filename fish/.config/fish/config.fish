@@ -6,7 +6,7 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-source /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc
+set -gx CPPFLAGS "-I/Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk/usr/include/c++/v1/ $CPPFLAGS"
 
 zoxide init fish | source
 starship init fish | source
