@@ -66,9 +66,31 @@ Never commit secrets, API tokens, passwords, or credentials. This is a public re
 - Shell env vars go in `fish_variables` via `set -Ux` — gitignored, never stowed
 - If a secret is accidentally staged, remove it and rotate the credential immediately
 
+## Theme switching
+
+Themes live in `themes/<name>/` and are applied with:
+
+```fish
+theme-set <name>   # e.g. theme-set tokyo-night
+```
+
+Each theme directory contains a `colors.toml` (shared palette) and optionally `neovim.lua` and `backgrounds/`. The `default/themed/` directory holds templates that `theme-set` renders via sed substitution.
+
+`theme-set` writes three generated files that are **not** committed:
+
+| Generated file | Source template |
+|---|---|
+| `~/.config/alacritty/colors.toml` | `default/themed/alacritty.toml.tpl` |
+| `~/.config/btop/themes/current.theme` | `default/themed/btop.theme.tpl` |
+| `~/.config/nvim/lua/current_theme.lua` | `themes/<name>/neovim.lua` (copied verbatim) |
+
+The active theme name is recorded in `~/.config/dots-theme`.
+
+On a fresh install, run `theme-set <name>` after stowing to generate these files. Neovim falls back to tokyo-night if `current_theme.lua` is missing.
+
 ## Conventions
 
-- **Theme**: Tokyo Night everywhere — alacritty, starship, btop all use the same palette.
+- **Theme**: Switchable via `theme-set` — tokyo-night is the default/fallback.
 - **Keybindings**: vim-style (`hjkl`) throughout, including AeroSpace window navigation.
 - **Shell**: Fish only. No zsh/bash configs live here.
 - **Neovim**: LazyVim starter — `nvim/init.lua` is minimal boilerplate; plugins managed by Lazy.
