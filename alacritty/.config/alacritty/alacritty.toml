@@ -3,9 +3,9 @@
 TERM = "xterm-256color"
 
 [font]
-normal = { family = "CaskaydiaMono Nerd Font", style = "Regular" }
-bold = { family = "CaskaydiaMono Nerd Font", style = "Bold" }
-italic = { family = "CaskaydiaMono Nerd Font", style = "Italic" }
+normal = { family = "CaskaydiaMono Nerd Font Mono", style = "Regular" }
+bold = { family = "CaskaydiaMono Nerd Font Mono", style = "Bold" }
+italic = { family = "CaskaydiaMono Nerd Font Mono", style = "Italic" }
 size = 16
 
 [window]

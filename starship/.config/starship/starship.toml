@@ -42,7 +42,7 @@ disabled = false
 [os.symbols]
 Arch = " "
 Linux = " "
-Macos = " "
+Macos = " "
 Windows = " "
 
 [fill]
@@ -91,7 +91,7 @@ style = "italic"
 format = "[$time]($style) "
 
 [aws]
-symbol = ' '
+symbol = ' '
 style = 'yellow'
 format = '[$symbol($profile )(\[$duration\] )]($style)'
 
