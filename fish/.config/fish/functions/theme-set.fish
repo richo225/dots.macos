@@ -57,7 +57,7 @@ function theme-set --description "Switch dots.macos theme"
 
     # Update neovim colorscheme
     if test -f $THEME_DIR/neovim.lua
-        cp $THEME_DIR/neovim.lua $DOTS/nvim/.config/nvim/lua/plugins/theme.lua
+        cp $THEME_DIR/neovim.lua ~/.config/nvim/lua/current_theme.lua
     end
 
     # Save current theme name
