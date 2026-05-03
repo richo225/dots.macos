@@ -1,38 +1,22 @@
 #!/bin/bash
+set -e
 
-CONFIG_DIR="$HOME/.config"
+DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
+
+PACKAGES=(aerospace alacritty borders btop fastfetch fish git mise nvim starship)
 
 echo "Installing brew packages..."
-brew bundle
+brew bundle --file="$DOTFILES_DIR/Brewfile"
 
-echo "⚠️  This will copy dotfiles to $CONFIG_DIR"
-echo "You'll be prompted for each directory that would be copied."
-read -p "Continue? (y/N): " -n 1 -r
-echo
-if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-    echo "Aborted."
-    exit 1
-fi
+echo "Stowing dotfiles to $HOME"
 
-for dir in */; do
-    dirname=${dir%/}
-    read -p "Copy $dirname to $CONFIG_DIR? (y/N): " -n 1 -r
-    echo
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
-        cp -r "$dir" "$CONFIG_DIR/"
-        echo "✅ Copied $dirname"
+for pkg in "${PACKAGES[@]}"; do
+    if stow --dir="$DOTFILES_DIR" --target="$HOME" --no-folding "$pkg" 2>/dev/null; then
+        echo "✅ $pkg"
     else
-        echo "⏭️  Skipped $dirname"
+        echo "⚠️  $pkg — conflict detected, run manually:"
+        echo "    stow --dir=$DOTFILES_DIR --target=$HOME --no-folding $pkg"
     fi
 done
-
-read -p "Copy starship.toml to $CONFIG_DIR? (y/N): " -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-    cp starship.toml "$CONFIG_DIR/"
-    echo "✅ Copied starship.toml"
-else
-    echo "⏭️  Skipped starship.toml"
-fi
 
 echo "Done!"
