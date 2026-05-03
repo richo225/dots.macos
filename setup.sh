@@ -3,7 +3,7 @@ set -e
 
 DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
 
-PACKAGES=(aerospace alacritty borders btop fastfetch fish git mise nvim starship)
+PACKAGES=(aerospace alacritty borders btop fastfetch fish mise nvim starship)
 
 echo "Installing brew packages..."
 brew bundle --file="$DOTFILES_DIR/Brewfile"
