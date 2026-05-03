@@ -32,9 +32,10 @@ function theme-set --description "Switch dots.macos theme"
     set -l sed_script (mktemp)
     awk -F'=' '/^[[:space:]]*#/{next} /^[[:space:]]*$/{next} NF>=2{key=$1; gsub(/[[:space:]]/,"",key); value=$0; sub(/^[^=]+=/,"",value); gsub(/^[[:space:]]*/,"",value); gsub(/^"/,"",value); gsub(/"[[:space:]]*$/,"",value); stripped=value; sub(/^#/,"",stripped); printf "s|{{ %s }}|%s|g\n",key,value; printf "s|{{ %s_strip }}|%s|g\n",key,stripped}' $COLORS_FILE > $sed_script
 
-    # Generate alacritty colors
+    # Generate alacritty colors and reload all open windows
     mkdir -p ~/.config/alacritty
     sed -f $sed_script $TEMPLATES_DIR/alacritty.toml.tpl > ~/.config/alacritty/colors.toml
+    alacritty msg config -w -1 --reset 2>/dev/null; true
 
     # Generate btop theme
     mkdir -p ~/.config/btop/themes
