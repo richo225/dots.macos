@@ -7,3 +7,4 @@ foo.*
 *.log
 data
 lua/current_theme.lua
+lazy-lock.json
