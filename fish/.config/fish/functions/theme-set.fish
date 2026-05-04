@@ -63,6 +63,18 @@ function theme-set --description "Switch dots.macos theme"
     # Save current theme name
     echo $THEME > ~/.config/dots-theme
 
+    # Set first background for the theme
+    set -l bg_dir $THEME_DIR/backgrounds
+    if test -d $bg_dir
+        set -l bg_files (command ls $bg_dir | sort)
+        if test (count $bg_files) -gt 0
+            set -l bg_name $bg_files[1]
+            set -l bg_path (realpath $bg_dir/$bg_name)
+            osascript -e "tell application \"System Events\" to tell every desktop to set picture to \"$bg_path\""
+            echo $bg_name > ~/.config/dots-theme-bg
+        end
+    end
+
     rm $sed_script
     echo "theme-set: switched to $THEME"
 end
