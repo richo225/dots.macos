@@ -16,7 +16,7 @@ fisher update       # reinstalls fish plugins from fish_plugins
 To stow a single package manually:
 
 ```bash
-stow --dir=~/code/dots.macos --target=~ --no-folding fish
+stow --dir=$HOME/code/dots.macos --target=$HOME --no-folding fish
 ```
 
 `--no-folding` prevents stow from symlinking whole directories when only some files are managed — important for fish since plugin-managed files coexist in the same dirs.
@@ -71,12 +71,14 @@ Never commit secrets, API tokens, passwords, or credentials. This is a public re
 Themes live in `themes/<name>/` and are applied with:
 
 ```fish
-theme-set <name>   # e.g. theme-set tokyo-night
+theme-set          # interactive fzf picker — choose theme then background
+theme-set <name>   # non-interactive, e.g. theme-set tokyo-night (picks first background)
+theme-bg-next      # cycle to the next background for the current theme
 ```
 
 Each theme directory contains a `colors.toml` (shared palette) and optionally `neovim.lua` and `backgrounds/`. The `default/themed/` directory holds templates that `theme-set` renders via sed substitution.
 
-`theme-set` writes three generated files that are **not** committed:
+`theme-set` writes generated files that are **not** committed:
 
 | Generated file | Source template |
 |---|---|
@@ -84,7 +86,14 @@ Each theme directory contains a `colors.toml` (shared palette) and optionally `n
 | `~/.config/btop/themes/current.theme` | `default/themed/btop.theme.tpl` |
 | `~/.config/nvim/lua/current_theme.lua` | `themes/<name>/neovim.lua` (copied verbatim) |
 
-The active theme name is recorded in `~/.config/dots-theme`.
+It also sets the macOS desktop wallpaper on all displays via osascript.
+
+State is tracked in two files:
+
+| File | Contents |
+|---|---|
+| `~/.config/dots-theme` | Active theme name |
+| `~/.config/dots-theme-bg` | Active background filename (e.g. `1-sunset-lake.png`) |
 
 On a fresh install, run `theme-set <name>` after stowing to generate these files. Neovim falls back to tokyo-night if `current_theme.lua` is missing.
 
