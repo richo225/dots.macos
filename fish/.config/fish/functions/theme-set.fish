@@ -3,17 +3,21 @@ function theme-set --description "Switch dots.macos theme"
     set -l THEMES_DIR $DOTS/themes
     set -l TEMPLATES_DIR $DOTS/default/themed
 
-    if test -z "$argv[1]"
-        echo "Usage: theme-set <theme-name>"
-        echo ""
-        echo "Available themes:"
-        for d in $THEMES_DIR/*/
-            echo "  "(basename $d)
-        end
-        return 1
-    end
+    set -l THEME ""
+    set -l SELECTED_BG ""
 
-    set -l THEME $argv[1]
+    if test -z "$argv[1]"
+        set THEME (command ls $THEMES_DIR | fzf --prompt="theme > " \
+            --height=~70% \
+            --preview="bat --style=plain --color=always $THEMES_DIR/{}/colors.toml 2>/dev/null" \
+            --preview-window=right:60%)
+        test -z "$THEME"; and return 0
+
+        set SELECTED_BG (command ls $THEMES_DIR/$THEME/backgrounds | sort | fzf --prompt="background > " --height=~40%)
+        test -z "$SELECTED_BG"; and return 0
+    else
+        set THEME $argv[1]
+    end
     set -l THEME_DIR $THEMES_DIR/$THEME
 
     if not test -d $THEME_DIR
@@ -69,6 +73,9 @@ function theme-set --description "Switch dots.macos theme"
         set -l bg_files (command ls $bg_dir | sort)
         if test (count $bg_files) -gt 0
             set -l bg_name $bg_files[1]
+            if test -n "$SELECTED_BG"
+                set bg_name $SELECTED_BG
+            end
             set -l bg_path (realpath $bg_dir/$bg_name)
             osascript -e "tell application \"System Events\" to tell every desktop to set picture to \"$bg_path\""
             echo $bg_name > ~/.config/dots-theme-bg
