@@ -36,6 +36,13 @@
             "keyColor": "green"
         },
         {
+            "type": "disk",
+            "key": "│ ├󰋊 Storage",
+            "folders": "/",
+            "format": "{1} / {2} ({3})",
+            "keyColor": "green"
+        },
+        {
             "type": "custom",
             "format": "└──────────────────────────────────────────────────────┘",
             "outputColor": "green"
@@ -58,18 +65,15 @@
         },
         {
             "type": "shell",
-            "key": "│ ├ Shell",
-            "keyColor": "yellow"
-        },
-        {
-            "type": "uptime",
-            "key": "└ └ Uptime",
+            "key": "│ └ Shell",
             "keyColor": "yellow"
         },
         "break",
         {
-            "type": "custom",
-            "format": "\u001b[34m󰢹 WM:\u001b[0m \u001b[97mAerospace\u001b[0m"
+            "type": "wm",
+            "key": "󰢹 WM",
+            "keyColor": "blue",
+            "format": "{plugin-name}"
         },
         {
             "type": "lm",
@@ -82,14 +86,14 @@
             "keyColor": "blue"
         },
         {
-            "type": "custom",
-            "format": "\u001b[34m└ └󰉼 Theme:\u001b[0m \u001b[97mTokyo Night\u001b[0m"
-          }
-          
-          ,
+            "type": "command",
+            "key": "│ └󰉼 Theme",
+            "keyColor": "blue",
+            "text": "cat ~/.config/dots-theme"
+        },
         {
             "type": "custom",
-            "format": "└────────────────────────────────────────────────────┘",
+            "format": "└──────────────────────────────────────────────────────┘",
             "outputColor": "blue"
         },
         {
