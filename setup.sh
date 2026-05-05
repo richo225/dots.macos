@@ -19,4 +19,7 @@ for pkg in "${PACKAGES[@]}"; do
     fi
 done
 
+echo "Installing fisher plugins..."
+fish -c "fisher update"
+
 echo "Done!"

@@ -9,8 +9,7 @@ macOS dotfiles repo managed with [GNU Stow](https://www.gnu.org/software/stow/).
 ## Installation
 
 ```bash
-./setup.sh          # installs Homebrew packages + stows all packages
-fisher update       # reinstalls fish plugins from fish_plugins
+./setup.sh          # installs Homebrew packages, stows all packages, runs fisher update
 ```
 
 To stow a single package manually:
@@ -55,7 +54,7 @@ fish/
 - **Not stowed**: fisher plugin files (fzf, zoxide, upto) — fisher owns these
 - **Gitignored**: `fish_variables` — stores universal variables including secrets (`set -Ux`)
 
-Fisher plugins are listed in `fish_plugins`. On a new machine, run `fisher update` after stowing to reinstall them.
+Fisher plugins are listed in `fish_plugins`. `setup.sh` runs `fisher update` automatically after stowing.
 
 Don't commit fisher plugin files or `fish_variables` to the repo.
 
@@ -68,7 +67,9 @@ Never commit secrets, API tokens, passwords, or credentials. This is a public re
 
 ## Theme switching
 
-Themes live in `themes/<name>/` and are applied with:
+Themes live in `themes/<name>/`. Available themes: catppuccin, catppuccin-latte, ethereal, everforest, flexoki-light, gruvbox, hackerman, kanagawa, lumon, matte-black, miasma, nord, osaka-jade, retro-82, ristretto, rose-pine, tokyo-night, vantablack, white.
+
+Apply with:
 
 ```fish
 theme-set          # interactive fzf picker — choose theme then background
@@ -84,9 +85,10 @@ Each theme directory contains a `colors.toml` (shared palette) and optionally `n
 |---|---|
 | `~/.config/alacritty/colors.toml` | `default/themed/alacritty.toml.tpl` |
 | `~/.config/btop/themes/current.theme` | `default/themed/btop.theme.tpl` |
+| fish color universal variables (`set -U`) | `default/themed/fish.theme.tpl` |
 | `~/.config/nvim/lua/current_theme.lua` | `themes/<name>/neovim.lua` (copied verbatim) |
 
-It also sets the macOS desktop wallpaper on all displays via osascript.
+It also live-reloads all open Alacritty windows (`alacritty msg config --reset`) and sets the macOS desktop wallpaper on all displays via osascript.
 
 State is tracked in two files:
 
