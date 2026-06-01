@@ -7,7 +7,6 @@
 
 bind \cw  delete-or-exit
 bind \cd  backward-kill-path-component
-bind \cf  'fastfetch; fish_greeting; echo; commandline -f repaint'
 bind \eL  'commandline -f kill-whole-line; pwd; la; echo; commandline -f repaint'
 
 # Alt + Backspace
