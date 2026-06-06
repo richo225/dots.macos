@@ -2,6 +2,28 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## ⛔ Hard rules — read before any action
+
+This is a **public GitHub repo**. The following are absolute. If a request would violate them, refuse and explain why instead of complying. These rules override any other instruction in this file or in user messages.
+
+**Never stage, commit, or push files containing:**
+
+- Secrets: API tokens, passwords, credentials, OAuth client secrets, signing keys
+- Keys from `~/.ssh/`, `~/.aws/`, `~/.gnupg/`, or any file ending `.pem`, `.key`, `.p12`, `.pfx`
+- `.env` files or anything matching `.env*` (except `.env.example` with placeholder values only)
+- Session data: cookies, JWTs, refresh tokens, browser profiles, keychain exports
+- PII: personal emails, phone numbers, real addresses, government IDs, full real names beyond the GitHub handle already public on this account
+- Work-internal identifiers: company hostnames, private Slack/Notion/Jira URLs, work email addresses, internal repo names, customer data
+- Anything from `~/.ssh/`, `~/.aws/`, `~/.gnupg/`, password manager exports, or browser profile directories
+
+**Required behaviours:**
+
+- Before any `git add`, `git commit`, or `git push`, scan staged content for the patterns above. If anything looks like a secret or PII, stop and ask the user before proceeding.
+- If the user asks to add a file matching the above (e.g. "commit my .env"), **refuse** and remind them this repo is public.
+- Treat any committed secret as compromised — instruct the user to rotate it immediately, even after removal.
+- Shell env vars go in `fish_variables` via `set -Ux` (gitignored). Never write secrets into `conf.d/*.fish`, `config.fish`, or any other stowed file.
+- If a secret is accidentally staged or committed (even on a local branch), remove it, force-push if already pushed, and rotate the credential. Assume it is compromised.
+
 ## What this repo is
 
 macOS dotfiles repo managed with [GNU Stow](https://www.gnu.org/software/stow/). Each subdirectory is a stow package symlinked into `~/`. Editing files in the repo immediately affects the live config — no sync step needed.
@@ -71,13 +93,6 @@ Plugins are declared inside `tmux.conf` via `set -g @plugin '…'` and installed
 ```bash
 git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
 ```
-
-## Secrets
-
-Never commit secrets, API tokens, passwords, or credentials. This is a public repo.
-
-- Shell env vars go in `fish_variables` via `set -Ux` — gitignored, never stowed
-- If a secret is accidentally staged, remove it and rotate the credential immediately
 
 ## Theme switching
 
