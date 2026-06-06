@@ -43,6 +43,7 @@ fish/
 | `mise/` | mise version manager | TOML |
 | `nvim/` | Neovim (LazyVim) | Lua |
 | `starship/` | Starship prompt | TOML |
+| `tmux/` | tmux terminal multiplexer | conf |
 
 `Brewfile` lists all Homebrew packages (formulae, casks, taps).
 
@@ -57,6 +58,19 @@ fish/
 Fisher plugins are listed in `fish_plugins`. `setup.sh` runs `fisher update` automatically after stowing.
 
 Don't commit fisher plugin files or `fish_variables` to the repo.
+
+## Tmux layout note
+
+`~/.config/tmux/` contains a mix of repo-managed and plugin-managed files. Only `tmux.conf` is stowed:
+
+- **Stowed**: `tmux.conf`
+- **Not stowed / gitignored**: `plugins/` — tpm clones plugin repos there at runtime, and tpm itself lives there
+
+Plugins are declared inside `tmux.conf` via `set -g @plugin '…'` and installed by `~/.config/tmux/plugins/tpm/bin/install_plugins` (or `<prefix> I` inside tmux). tpm must be cloned manually on a fresh install:
+
+```bash
+git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
+```
 
 ## Secrets
 

@@ -1,2 +1,3 @@
 fish/.config/fish/fish_variables
 git/.config/git/ignore
+tmux/.config/tmux/plugins/
