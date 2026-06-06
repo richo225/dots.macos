@@ -43,8 +43,8 @@ function key_part_text(part, is_modifier, part_count) {
   if (part == "NPage") return "PAGE DOWN"
   if (part == "DC") return "DELETE"
   if (part == "IC") return "INSERT"
-  if (part_count == 1 && part ~ /^[a-z]$/) return part
-  if (part_count > 1 && !is_modifier && part ~ /^[A-Z]$/) return "SHIFT + " part
+  if (!is_modifier && part ~ /^[a-z]$/) return part
+  if (!is_modifier && part ~ /^[A-Z]$/) return "SHIFT + " tolower(part)
 
   return toupper(part)
 }
@@ -56,7 +56,7 @@ function key_text(key, parts, count, i, part, text) {
   # after macOS strips Cmd and Alacritty drops Shift in legacy mode.
   if (key ~ /^C-M-[a-zA-Z]$/) {
     sub(/^C-M-/, "", key)
-    return "HYPER + " toupper(key)
+    return "HYPER + " tolower(key)
   }
 
   count = split(key, parts, "-")
