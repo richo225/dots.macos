@@ -24,6 +24,8 @@ This is a **public GitHub repo**. The following are absolute. If a request would
 - Shell env vars go in `fish_variables` via `set -Ux` (gitignored). Never write secrets into `conf.d/*.fish`, `config.fish`, or any other stowed file.
 - If a secret is accidentally staged or committed (even on a local branch), remove it, force-push if already pushed, and rotate the credential. Assume it is compromised.
 
+**Automated guard:** `gitleaks` runs as a pre-commit hook via [pre-commit.com](https://pre-commit.com). It blocks any commit containing a detected secret. Config: `.pre-commit-config.yaml`. To bypass (only with strong reason): `SKIP=gitleaks git commit ...` — never with `--no-verify`. To allowlist a false positive on one line: append `#gitleaks:allow`.
+
 ## What this repo is
 
 macOS dotfiles repo managed with [GNU Stow](https://www.gnu.org/software/stow/). Each subdirectory is a stow package symlinked into `~/`. Editing files in the repo immediately affects the live config — no sync step needed.

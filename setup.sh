@@ -22,4 +22,7 @@ done
 echo "Installing fisher plugins..."
 fish -c "fisher update"
 
+echo "Installing pre-commit hooks..."
+pre-commit install
+
 echo "Done!"
